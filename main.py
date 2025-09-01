@@ -3,6 +3,10 @@ from fastapi.responses import PlainTextResponse # type: ignore
 
 app = FastAPI()
 
+@app.get("/", response_class=PlainTextResponse)
+async def ping():
+    return Response(content="Hello FastAPI!", media_type="text/plain", status_code=200)
+
 @app.get("/ping", response_class=PlainTextResponse)
 async def ping():
     return Response(content="pong", media_type="text/plain", status_code=200)
